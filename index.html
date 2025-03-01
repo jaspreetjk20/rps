@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     console.log("Hello World");
+     function getComputerChoice(){
+        return Math.floor(Math.random()*3);
+     }
+     function getHumanChoice(){
+        return (prompt("rock / paper / scissors ?").toLowerCase);
+     }
+
+     let humanScore = 0;
+     let computerScore = 0;
+     let roundcounter = 0;
+     let humanchoice = "";
+     let computerchoice = 0;
+     
+     function playRound(){
+        computerchoice = getComputerChoice();
+        humanchoice = getHumanChoice(); 
+       if (computerchoice == 0 && humanchoice == "paper") {humanScore++;}
+       else if (computerchoice == 0 && humanchoice == "scissors") {computerScore++;}
+       else if (computerchoice == 1 && humanchoice == "scissors") {humanScore++;}
+       else if (computerchoice == 1 && humanchoice == "rock") {computerScore++;}
+       else if (computerchoice == 2 && humanchoice == "rock") {humanScore++;}
+       else if (computerchoice == 2 && humanchoice == "paper") {computerScore++;}
+       else return;}
+
+       while(roundcounter < 5){
+        playRound();
+        console.log(`Your score: ${humanScore}\nComputer score: ${computerScore}`);
+        roundcounter++;
+       }
+       if (humanScore > computerScore) { console.log("You Won!"); }
+else if (humanScore < computerScore) { console.log("You Lost"); }
+else { console.log("Tie"); };
+    </script>
+</body>
+</html>
