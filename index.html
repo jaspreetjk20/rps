@@ -8,29 +8,44 @@
 <body>
     <script>
      console.log("Hello World");
+
      function getComputerChoice(){
-        return Math.floor(Math.random()*3);
+        const choices = ["rock", "paper", "scissors"];
+        return choices[Math.floor(Math.random()*3)];
      }
      function getHumanChoice(){
-        return (prompt("rock / paper / scissors ?").toLowerCase());
+        return prompt("rock / paper / scissors ?").toLowerCase();
      }
 
      let humanScore = 0;
      let computerScore = 0;
      let roundcounter = 0;
-     let humanchoice = "";
-     let computerchoice = 0;
      
      function playRound(){
-        computerchoice = getComputerChoice();
-        humanchoice = getHumanChoice(); 
-       if (computerchoice == 0 && humanchoice == "paper") {humanScore++;}
-       else if (computerchoice == 0 && humanchoice == "scissors") {computerScore++;}
-       else if (computerchoice == 1 && humanchoice == "scissors") {humanScore++;}
-       else if (computerchoice == 1 && humanchoice == "rock") {computerScore++;}
-       else if (computerchoice == 2 && humanchoice == "rock") {humanScore++;}
-       else if (computerchoice == 2 && humanchoice == "paper") {computerScore++;}
-       else return;}
+        const computerchoice = getComputerChoice();
+        const humanchoice = getHumanChoice(); 
+        if (!["rock", "paper", "scissors"].includes(humanchoice)) {
+        console.log("Invalid input, round skipped.");
+        return;
+      }
+
+      console.log(`You chose ${humanchoice}, computer chose ${computerchoice}`);
+
+      if (computerchoice === humanchoice) {
+        console.log("Draw this round.");
+      } else if (
+        (computerchoice === "rock" && humanchoice === "paper") ||
+        (computerchoice === "paper" && humanchoice === "scissors") ||
+        (computerchoice === "scissors" && humanchoice === "rock")
+      ) {
+        humanScore++;
+        console.log("You win this round!");
+      } else {
+        computerScore++;
+        console.log("Computer wins this round!");
+      }
+    }
+
 
        while(roundcounter < 5){
         playRound();
