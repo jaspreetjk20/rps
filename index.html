@@ -3,61 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors </title>
 </head>
 <body>
+
+<div class = "game-container">
+    <h1> Rock Paper Scissors</h1>
+    <p> "Ready, set, go!" </p>
+
+<div class = "score">
+<div class = "player">
+    <h2 id = "PLAYER"> YOU: 0 </h2>
+    <div id = "player-choice" class = "hand">✊</div> 
+</div>
+
+<div class = "computer">
+  <h2 id = "COMPUTER"> COMPUTER: 0 </h2>
+  <div id = "computer-choice" class = "hand">✊</div> 
+</div>
+</div>
+
+<p class = "move"> Your Move!</p>
+
+<div class = "buttons">
+  <button id = "rock">✊ </button>
+  <button id = "paper">✋ </button>
+  <button id = "scissors">✌️ </button>
+</div>
+</div>
+
+
 
 <div id = "container"></div>
 <div id = "results"></div>  
 
-<script>
-//score variables
-let playerScore = 0;
-let computerScore = 0;
-//container & result div
-const container = document.querySelector('#container');
-const results = document.querySelector('#results');
-//function for computerchoice input
-function getComputerChoice(){
-const choices = ["rock", "paper", "scissors"];
-return choices[Math.floor(Math.random()*3)];
-}
-//function for roundplay
-function playRound(playerChoice){
-const computerChoice = getComputerChoice();
-let res = '';
-if(playerChoice == computerChoice)
-res = `It is a tie!`;
-else if((playerChoice == 'rock' && computerChoice == 'scissors') || (playerChoice == 'paper' && computerChoice == 'rock') || (playerChoice == 'scissors' && computerChoice == 'paper')){
-playerScore++;
-res = `You win! ${playerChoice} beats ${computerChoice}`;  
-}
-else{
-  computerScore++;
-  res = `You lose! ${computerChoice} beats ${playerChoice}`;
-}
-results.textContent = `${res}, Score: You: ${playerScore} | Computer: = ${computerScore}`;
-if(playerScore == 5 || computerScore == 5){
- const winner = playerScore == 5? "You won the game!" : "Computer won the game!";
- results.textContent += `${winner}`; 
-}
-}
+<script src = "script.js"></script>
+<link rel="stylesheet" href="style.css">
 
-//Rock Button
-const rockbn = document.createElement('button');
-rockbn.textContent = 'Rock';
-rockbn.addEventListener('click', () => playRound('rock'));
-container.appendChild(rockbn);
-//Paper Button
-const paperbn = document.createElement('button');
-paperbn.textContent = 'Paper';
-paperbn.addEventListener('click', () => playRound('paper'));
-container.appendChild(paperbn);
-//Scissors Button
-const scissorbn = document.createElement('button');
-scissorbn.textContent = 'Scissors';
-scissorbn.addEventListener('click', () => playRound('scissors'));
-container.appendChild(scissorbn);  
-</script>      
 </body>
 </html>
